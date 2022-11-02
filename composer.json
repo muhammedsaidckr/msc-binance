@@ -1,0 +1,16 @@
+{
+    "name": "msc/msc-binance",
+    "description": " Laravel wrapper for the Binance web API",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "muhammedsaidckr",
+            "email": "muhammedsaidckr@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "8.1",
+        "laravel": "9.*"
+    }
+}
