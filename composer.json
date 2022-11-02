@@ -1,5 +1,5 @@
 {
-    "name": "msc/msc-binance",
+    "name": "mscakir/msc-binance",
     "description": " Laravel wrapper for the Binance web API",
     "minimum-stability": "stable",
     "license": "MIT",
