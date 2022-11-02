@@ -20,7 +20,7 @@ class MscBinanceServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/..config/config.php', 'msc-binance');
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'msc-binance');
 
         $this->app->singleton('msc-binance', function () {
             return new MscBinance;
