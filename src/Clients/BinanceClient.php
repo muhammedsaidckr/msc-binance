@@ -5,7 +5,7 @@ namespace Mscakir\MscBinance\Clients;
 use Mscakir\MscBinance\Contracts\Clients\BinanceClient as BinanceClientContract;
 use Mscakir\MscBinance\Authentication\ApiCredentials;
 
-class BinanceClient implements BinanceClientContract
+class BinanceClient extends BaseRestClient implements BinanceClientContract
 {
     public function __construct()
     {

@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Mscakir\MscBinance\Clients\ApiClientOptions;
 use Mscakir\MscBinance\Enums\RateLimitingBehaviour;
-use DateTimeZone;
 
 class RestApiClientOptions extends ApiClientOptions
 {
@@ -20,6 +19,7 @@ class RestApiClientOptions extends ApiClientOptions
 
     public function __construct()
     {
+        parent::__construct();
     }
 
     /**

@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Mscakir\\MscBinance\\": "src"
+            "Mscakir\\MscBinance\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Mscakir\\MscBinance\\Tests\\": "tests"
+            "Mscakir\\MscBinance\\Tests\\": "tests/"
         }
     },
     "scripts": {

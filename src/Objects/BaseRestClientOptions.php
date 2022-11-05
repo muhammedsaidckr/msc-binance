@@ -13,15 +13,23 @@ class BaseRestClientOptions extends BaseClientOptions
 
     public function __construct()
     {
+        parent::__construct();
     }
 
-    public function withBaseOptions(BaseRestClientOptions|BaseClientOptions $baseOptions = null): void
+    /**
+     * @param BaseRestClientOptions|BaseClientOptions|BaseOptions|null $baseOptions
+     * @return BaseRestClientOptions|null
+     */
+    public function withBaseOptions(BaseRestClientOptions|BaseClientOptions|BaseOptions $baseOptions = null): BaseRestClientOptions|null
     {
+        $instance = new self();
         if($baseOptions == null) {
-            return;
+            return null;
         }
         parent::withBaseOptions($baseOptions);
         $this->httpClient = $baseOptions->httpClient;
         $this->requestTimeout = $baseOptions->requestTimeout;
+
+        return $instance;
     }
 }

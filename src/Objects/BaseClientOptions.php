@@ -4,7 +4,7 @@ namespace Mscakir\MscBinance\Objects;
 
 use Mscakir\MscBinance\Authentication\ApiCredentials;
 
-class BaseClientOptions
+class BaseClientOptions extends BaseOptions
 {
     public ApiProxy $proxy;
 
@@ -12,19 +12,21 @@ class BaseClientOptions
 
     public function __construct()
     {
+        parent::__construct();
     }
 
     /**
-     * @param BaseClientOptions|null $baseOptions
-     * @return void
+     * @param BaseClientOptions|BaseOptions|null $baseOptions
+     * @return BaseClientOptions|void
      */
-    public function withBaseOptions(BaseClientOptions $baseOptions = null) : void
+    public function withBaseOptions(BaseClientOptions|BaseOptions $baseOptions = null): ?BaseClientOptions
     {
         $instance = new self();
-        if($baseOptions == null) {
+        if ($baseOptions == null) {
             return;
         }
         $this->proxy = $baseOptions->proxy;
         $this->apiCredentials = $baseOptions->apiCredentials;
+        return $instance;
     }
 }
