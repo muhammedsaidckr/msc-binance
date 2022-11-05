@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Mscakir\MscBinance\Contracts\Clients;
 
-use Mscakir\MscBinance\Model\ApiCredentials;
+use Mscakir\MscBinance\Authentication\ApiCredentials;
 use Psr\Http\Message\ResponseInterface;
 
 interface BinanceClient

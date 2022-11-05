@@ -1,6 +1,6 @@
 <?php
 
-namespace Mscakir\MscBinance\Model;
+namespace Mscakir\MscBinance\Authentication;
 
 use Mscakir\MscBinance\Helpers\SecureString;
 use Exception;
