@@ -18,7 +18,7 @@ class ApiClientOptions
      * @param string $baseAddress
      * @return ApiClientOptions
      */
-    public function withBaseAddress(string $baseAddress): ApiClientOptions
+    public static function withBaseAddress(string $baseAddress): ApiClientOptions
     {
         $instance = new self();
         $instance->baseAddress = $baseAddress;

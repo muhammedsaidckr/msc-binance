@@ -26,7 +26,7 @@ class RestApiClientOptions extends ApiClientOptions
      * @param string $baseAddress
      * @return RestApiClientOptions
      */
-    public function withBaseAddress(string $baseAddress) : RestApiClientOptions
+    public static function withBaseAddress(string $baseAddress) : RestApiClientOptions
     {
         $instance = new self();
         parent::withBaseAddress($baseAddress);

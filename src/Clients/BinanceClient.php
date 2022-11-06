@@ -19,6 +19,22 @@ class BinanceClient extends BaseRestClient implements BinanceClientContract
         parent::__construct($name, $options);
     }
 
+    /**
+     * @return static
+     * @throws Exception
+     */
+    public static function default(): self
+    {
+        return new self("Binance", BinanceClientOptions::default());
+    }
+
+    public static function withOptions()
+    {
+        /**
+         * TODO: Binance Client Contracts will be created after then return
+         */
+    }
+
     public function setApiCredentials(ApiCredentials $credentials): void
     {
 
