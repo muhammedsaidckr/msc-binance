@@ -2,48 +2,63 @@
 
 namespace Mscakir\MscBinance\Objects;
 
-use Illuminate\Support\Collection;
-
 class BinanceApiAddresses
 {
+    public string $restClientAddress = "";
+
+    public string $socketClientAddress = "";
+
+    public string|null $blvtSocketClientAddress;
+
+    public string|null $usdFuturesRestClientAddress;
+
+    public string|null $usdFuturesSocketClientAddress;
+
+    public string|null $coinFuturesRestClientAddress;
+
+    public string|null $coinFuturesSocketClientAddress;
+
+    public function __construct()
+    {
+    }
+
+
     /**
      * The default addresses to connect to the binance.com API
      *
-     * @return Collection
+     * @return BinanceApiAddresses
      */
-    public static function default(): Collection
+    public static function default(): BinanceApiAddresses
     {
-        return new Collection(
-            [
-                "restClientAddress" => "https://api.binance.com",
-                "socketClientAddress" => "wss://stream.binance.com:9443/",
-                "blvtSocketClientAddress" => "wss://nbstream.binance.com/lvt-p",
-                "usdFuturesRestClientAddress" => "https://fapi.binance.com",
-                "usdFuturesSocketClientAddress" => "wss://fstream.binance.com/",
-                "coinFuturesRestClientAddress" => "https://dapi.binance.com",
-                "coinFuturesSocketClientAddress" => "wss://dstream.binance.com/",
-            ]
-        );
+        $instance = new self();
+        $instance->restClientAddress = "https://api.binance.com";
+        $instance->socketClientAddress = "wss://stream.binance.com:9443/";
+        $instance->blvtSocketClientAddress = "wss://nbstream.binance.com/lvt-p";
+        $instance->usdFuturesRestClientAddress = "https://fapi.binance.com";
+        $instance->usdFuturesSocketClientAddress = "wss://fstream.binance.com/";
+        $instance->coinFuturesRestClientAddress = "https://dapi.binance.com";
+        $instance->coinFuturesSocketClientAddress = "wss://dstream.binance.com/";
+
+        return $instance;
     }
+
 
     /**
      * The addresses to connect to the binance testnet
      *
-     * @return Collection
+     * @return BinanceApiAddresses
      */
-    public static function testNet(): Collection
+    public static function testNet(): BinanceApiAddresses
     {
-        return new Collection(
-            [
-                "restClientAddress" => "https://testnet.binance.vision",
-                "socketClientAddress" => "wss://testnet.binance.vision",
-                "blvtSocketClientAddress" => "wss://fstream.binancefuture.com",
-                "usdFuturesRestClientAddress" => "https://testnet.binancefuture.com",
-                "usdFuturesSocketClientAddress" => "wss://fstream.binancefuture.com",
-                "coinFuturesRestClientAddress" => "https://testnet.binancefuture.com",
-                "coinFuturesSocketClientAddress" => "wss://dstream.binancefuture.com",
-            ]
-        );
-    }
+        $instance = new self();
+        $instance->restClientAddress = "https://testnet.binance.vision";
+        $instance->socketClientAddress = "wss://testnet.binance.vision";
+        $instance->blvtSocketClientAddress = "wss://fstream.binancefuture.com";
+        $instance->usdFuturesRestClientAddress = "https://testnet.binancefuture.com";
+        $instance->usdFuturesSocketClientAddress = "wss://fstream.binancefuture.com";
+        $instance->coinFuturesRestClientAddress = "https://testnet.binancefuture.com";
+        $instance->coinFuturesSocketClientAddress = "wss://dstream.binancefuture.com";
 
+        return $instance;
+    }
 }
