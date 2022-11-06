@@ -37,17 +37,19 @@ class BaseOptions
 
     public function __construct()
     {
+        $this->logLevel = LogLevel::INFO;
+        $this->logWriters = new Collection();
     }
 
     /**
      * @param BaseOptions|null $baseOptions
-     * @return BaseOptions|void
+     * @return BaseOptions|null
      */
     public function withBaseOptions(BaseOptions|null $baseOptions): BaseOptions|null
     {
         $instance = new self();
         if ($baseOptions == null) {
-            return;
+            return null;
         }
 
         $this->logLevel = $baseOptions->logLevel;

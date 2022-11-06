@@ -1,7 +1,8 @@
 {
     "name": "mscakir/msc-binance",
     "description": " Laravel wrapper for the Binance web API",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "license": "MIT",
     "homepage": "https://github.com/muhammedsaidckr/msc-binance",
     "version": "v0.0.1",

@@ -1,14 +1,17 @@
 <?php
+
 namespace Mscakir\MscBinance\Tests;
 
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mscakir\MscBinance\Clients\BinanceClient;
 use Mscakir\MscBinance\MscBinanceServiceProvider;
+use Mscakir\MscBinance\Objects\BinanceClientOptions;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Tests\CreatesApplication;
 
-abstract class TestCase extends BaseTestCase
+class UnitTest extends BaseTestCase
 {
     use CreatesApplication;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -25,5 +28,13 @@ abstract class TestCase extends BaseTestCase
     protected function getEnvironmentSetUp($app)
     {
         // perform environment setup
+    }
+
+    public function test_is_api_client_created()
+    {
+        $apiClient = new BinanceClient("Binance", BinanceClientOptions::default());
+
+        $this->assertTrue("Binance" == $apiClient->name);
+        $this->assertTrue();
     }
 }

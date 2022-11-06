@@ -2,15 +2,11 @@
 
 namespace Mscakir\MscBinance\Clients;
 
-use Carbon\Traits\Localization;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
-use JsonSerializable;
-use DateTimeZone;
 use Mscakir\MscBinance\Objects\BaseClientOptions;
 use Mscakir\MscBinance\Objects\CallResult;
-use Mscakir\MscBinance\Objects\DeserializerError;
 use Psr\Log\LogLevel;
+use Illuminate\Support\Facades\Log;
 
 abstract class BaseClient
 {
@@ -40,7 +36,7 @@ abstract class BaseClient
         $this->log = new Log($name);
         $this->clientOptions = $options;
         $this->name = $name;
-        $this->log->write(LogLevel::EMERGENCY, sprintf("Client configuration: %s, MscExchange: v%s", (object)$options, app(BaseClient::class)->version()));
+        Log::emergency(sprintf("Client configuration: %s, MscExchange: v%s", (object)$options, '1'));
     }
 
     /**
@@ -49,7 +45,9 @@ abstract class BaseClient
      */
     protected function AddApiClient(BaseApiClient $apiClient): BaseApiClient
     {
-        $this->log->write(LogLevel::EMERGENCY, sprintf("%s configuration : %s", (object)gettype($apiClient), (object)$apiClient->options));
+        Log::emergency(
+            sprintf("%s configuration : %s", (object)gettype($apiClient), (object)$apiClient->options)
+        );
         $this->apiClients->add($apiClient);
         return $apiClient;
     }

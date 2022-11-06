@@ -25,5 +25,9 @@ class MscBinanceServiceProvider extends ServiceProvider
         $this->app->singleton('msc-binance', function () {
             return new MscBinance;
         });
+
+        $this->app->bind('msc-binance', function($app) {
+            return new MscBinance($app);
+        });
     }
 }
