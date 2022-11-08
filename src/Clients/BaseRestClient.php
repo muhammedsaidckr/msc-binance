@@ -3,12 +3,12 @@
 namespace Mscakir\MscBinance\Clients;
 
 use Mscakir\MscBinance\Authentication\ApiCredentials;
-use Mscakir\MscBinance\Contracts\Clients\RestClient;
+use Mscakir\MscBinance\Contracts\Clients\RestClientInterface;
 use Mscakir\MscBinance\Contracts\RequestFactoryInterface;
 use Mscakir\MscBinance\Objects\BaseClientOptions;
 use Exception;
 
-abstract class BaseRestClient extends BaseClient implements RestClient
+abstract class BaseRestClient extends BaseClient implements RestClientInterface
 {
     public RequestFactoryInterface $requestFactory;
 

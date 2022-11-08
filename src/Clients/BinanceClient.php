@@ -3,18 +3,18 @@
 namespace Mscakir\MscBinance\Clients;
 
 use Exception;
-use Mscakir\MscBinance\Contracts\Clients\BinanceClient as BinanceClientContract;
+use Mscakir\MscBinance\Contracts\Clients\BinanceClientInterface;
 use Mscakir\MscBinance\Authentication\ApiCredentials;
 use Mscakir\MscBinance\Objects\BaseClientOptions;
 use Mscakir\MscBinance\Objects\BinanceClientOptions;
 
-class BinanceClient extends BaseRestClient implements BinanceClientContract
+class BinanceClient extends BaseRestClient implements BinanceClientInterface
 {
 
     /**
      * @throws Exception
      */
-    public function __construct(string $name = "Binance", BinanceClientOptions $options)
+    public function __construct(string $name, BinanceClientOptions $options)
     {
         parent::__construct($name, $options);
     }
