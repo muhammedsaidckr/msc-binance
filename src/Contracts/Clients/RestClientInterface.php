@@ -4,7 +4,7 @@ namespace Mscakir\MscBinance\Contracts\Clients;
 
 use Mscakir\MscBinance\Authentication\ApiCredentials;
 
-interface RestClient
+interface RestClientInterface
 {
 
     /**

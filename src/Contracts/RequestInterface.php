@@ -4,7 +4,7 @@ namespace Mscakir\MscBinance\Contracts;
 
 use Psr\Http\Message\ResponseInterface;
 
-interface Request
+interface RequestInterface
 {
     /**
      * Set string content
