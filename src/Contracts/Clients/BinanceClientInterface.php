@@ -6,7 +6,7 @@ namespace Mscakir\MscBinance\Contracts\Clients;
 use Mscakir\MscBinance\Authentication\ApiCredentials;
 use Psr\Http\Message\ResponseInterface;
 
-interface BinanceClient extends RestClient
+interface BinanceClientInterface extends RestClientInterface
 {
     /**
      * Set the API credentials for this client. All Api clients in this client will use the new credentials,
