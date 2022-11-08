@@ -15,7 +15,8 @@
     "require": {
         "php": "^8.1",
         "illuminate/support": "^9.0",
-        "ext-openssl": "*"
+        "ext-openssl": "*",
+        "moneyphp/money": "^3.0"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",
