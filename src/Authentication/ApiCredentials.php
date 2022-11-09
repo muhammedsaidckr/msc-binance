@@ -25,34 +25,46 @@ class ApiCredentials
      */
     public PrivateKey $privateKey;
 
+    public function __construct()
+    {
+    }
+
     /**
      * Create Api credentials providing a private key for authentication
      *
      * @param PrivateKey $privateKey
-     * @return void
+     * @return ApiCredentials
      */
-    public function createWithPrivateKey(PrivateKey $privateKey) : void
+    public function createWithPrivateKey(PrivateKey $privateKey) : ApiCredentials
     {
-        $this->privateKey = $privateKey;
+        $instance = new self();
+        $instance->privateKey = $privateKey;
+        return $instance;
     }
+
+    /**
+     * TODO: Add createWithStream constructor
+     */
 
     /**
      * Create Api credentials providing api key and secret key for authentication
      *
      * @param string $key
      * @param string $secret
-     * @return void
+     * @return ApiCredentials
      * @throws Exception
      */
-    public function createWithApiAndSecretKey(string $key, string $secret) : void
+    public function createWithApiAndSecretKey(string $key, string $secret) : ApiCredentials
     {
         if(isEmptyOrNullString($key) || isEmptyOrNullString($secret)) {
             throw new Exception("Key and secret can't be empty/null");
         }
+        $instance = new self();
         $secureKey = new SecureString();
-        $this->key = $secureKey->encode($key, ["hsha1" => SecureString::generateRandomKey(10)]);
+        $instance->key = $secureKey->encode($key, ["hsha1" => SecureString::generateRandomKey(10)]);
 
         $secureSecret = new SecureString();
-        $this->secret = $secureSecret->encode($secret, ["hsha1" => SecureString::generateRandomKey(10)]);
+        $instance->secret = $secureSecret->encode($secret, ["hsha1" => SecureString::generateRandomKey(10)]);
+        return $instance;
     }
 }
