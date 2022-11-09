@@ -3,16 +3,20 @@
 namespace Mscakir\MscBinance\Objects;
 
 use Illuminate\Support\Collection;
-use Psr\Log\LogLevel;
+use Mscakir\MscBinance\Logging\LogLevel;
+use Psr\Log\LoggerInterface;
 
 class BaseOptions
 {
-    private LogLevel|string $_logLevel = LogLevel::INFO;
+    private LogLevel $_logLevel = LogLevel::INFO;
 
-    public LogLevel|string $logLevel;
+    public LogLevel $logLevel;
 
     private Collection $_logWriters;
 
+    /**
+     * @var Collection<LoggerInterface> $logWriters
+     */
     public Collection $logWriters;
 
     public bool $outputOriginalData = false;
