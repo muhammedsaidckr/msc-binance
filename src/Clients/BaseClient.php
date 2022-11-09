@@ -3,10 +3,10 @@
 namespace Mscakir\MscBinance\Clients;
 
 use Illuminate\Support\Collection;
+use Mscakir\MscBinance\Logging\LogLevel;
 use Mscakir\MscBinance\Objects\BaseClientOptions;
 use Mscakir\MscBinance\Objects\CallResult;
-use Psr\Log\LogLevel;
-use Illuminate\Support\Facades\Log;
+use Mscakir\MscBinance\Logging\Log;
 
 abstract class BaseClient
 {
@@ -34,9 +34,11 @@ abstract class BaseClient
     protected function __construct(string $name, BaseClientOptions $options)
     {
         $this->log = new Log($name);
+        $this->log->updateWriters($options->logWriters);
+        $this->log->level = $options->logLevel;
         $this->clientOptions = $options;
         $this->name = $name;
-        Log::emergency(sprintf("Client configuration: %s, MscExchange: v%s", (object)$options, '1'));
+        $this->log->write(LogLevel::EMERGENCY, sprintf("Client configuration: %s, MscExchange: v%s", (object)$options, '1'));
     }
 
     /**
@@ -45,7 +47,7 @@ abstract class BaseClient
      */
     protected function AddApiClient(BaseApiClient $apiClient): BaseApiClient
     {
-        Log::emergency(
+        $this->log->write(LogLevel::EMERGENCY,
             sprintf("%s configuration : %s", (object)gettype($apiClient), (object)$apiClient->options)
         );
         $this->apiClients->add($apiClient);
