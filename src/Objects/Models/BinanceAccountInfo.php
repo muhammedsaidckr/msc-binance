@@ -2,6 +2,7 @@
 
 namespace Mscakir\MscBinance\Objects\Models;
 
+use Illuminate\Support\Collection;
 use Money\Money;
 use DateTime;
 use Mscakir\MscBinance\Enums\AccountType;
@@ -76,14 +77,14 @@ class BinanceAccountInfo
     /**
      * Permission types
      *
-     * @var array $permissions
+     * @var Collection<AccountType> $permissions
      */
-    public array $permissions;
+    public Collection $permissions;
 
     /**
      * Lis of assets with their current balances
      *
-     * @var array $balances
+     * @var Collection<BinanceBalance> $balances
      */
-    public array $balances;
+    public Collection $balances;
 }
