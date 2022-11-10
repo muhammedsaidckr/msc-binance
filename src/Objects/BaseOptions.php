@@ -65,6 +65,6 @@ class BaseOptions
 
     public function __toString(): string
     {
-        return sprintf("LogLevel: %s, Writers: %d, OutputOriginalData: %s", $this->logLevel, $this->logWriters->count(), $this->outputOriginalData);
+        return sprintf("LogLevel: %s, Writers: %d, OutputOriginalData: %s", $this->logLevel->value, $this->logWriters->count(), $this->outputOriginalData);
     }
 }
