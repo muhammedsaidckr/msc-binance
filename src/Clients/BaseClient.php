@@ -19,6 +19,7 @@ abstract class BaseClient
 
     /**
      * The last used id, use NextId() to get the next id and up this
+     *
      * @var int
      */
     protected static int $lastId;
@@ -38,16 +39,20 @@ abstract class BaseClient
         $this->log->level = $options->logLevel;
         $this->clientOptions = $options;
         $this->name = $name;
-        $this->log->write(LogLevel::EMERGENCY, sprintf("Client configuration: %s, MscExchange: v%s", (object)$options, '1'));
+        $this->log->write(
+            LogLevel::EMERGENCY,
+            sprintf("Client configuration: %s, MscExchange: v%s", (object)$options, '1')
+        );
     }
 
     /**
-     * @param BaseApiClient $apiClient
+     * @param  BaseApiClient  $apiClient
      * @return BaseApiClient
      */
-    protected function AddApiClient(BaseApiClient $apiClient): BaseApiClient
+    protected function addApiClient(BaseApiClient $apiClient): BaseApiClient
     {
-        $this->log->write(LogLevel::EMERGENCY,
+        $this->log->write(
+            LogLevel::EMERGENCY,
             sprintf("%s configuration : %s", (object)gettype($apiClient), (object)$apiClient->options)
         );
         $this->apiClients->add($apiClient);
@@ -55,7 +60,7 @@ abstract class BaseClient
     }
 
     /**
-     * @param string $data
+     * @param  string  $data
      * @return CallResult
      */
 //    protected function validateJson(string $data) : CallResult
