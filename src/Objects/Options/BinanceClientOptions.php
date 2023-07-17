@@ -1,6 +1,8 @@
 <?php
 
-namespace Mscakir\MscBinance\Objects;
+namespace Mscakir\MscBinance\Objects\Options;
+
+use Mscakir\MscBinance\Objects\BinanceApiAddresses;
 
 class BinanceClientOptions extends BaseRestClientOptions
 {
@@ -50,7 +52,7 @@ class BinanceClientOptions extends BaseRestClientOptions
     /**
      * @return BinanceClientOptions
      */
-    public static function default() : BinanceClientOptions
+    public static function default(): BinanceClientOptions
     {
         return new self();
     }
@@ -60,10 +62,14 @@ class BinanceClientOptions extends BaseRestClientOptions
         parent::__get($name);
         if ($name == 'spotApiOptions') {
             $this->spotApiOptions = $this->_spotApiOptions;
-        } else if($name == 'usdFuturesApiOptions') {
-            $this->usdFuturesApiOptions = $this->_usdFuturesApiOptions;
-        } else if($name == 'coinFuturesApiOptions') {
-            $this->coinFuturesApiOptions = $this->_coinFuturesApiOptions;
+        } else {
+            if ($name == 'usdFuturesApiOptions') {
+                $this->usdFuturesApiOptions = $this->_usdFuturesApiOptions;
+            } else {
+                if ($name == 'coinFuturesApiOptions') {
+                    $this->coinFuturesApiOptions = $this->_coinFuturesApiOptions;
+                }
+            }
         }
     }
 
@@ -72,10 +78,14 @@ class BinanceClientOptions extends BaseRestClientOptions
         parent::__set($name, $value);
         if ($name == 'spotApiOptions') {
             $this->_spotApiOptions = $value;
-        } else if($name == 'usdFuturesApiOptions') {
-            $this->_spotApiOptions = $value;
-        } else if($name == 'coinFuturesApiOptions') {
-            $this->_coinFuturesApiOptions = $value;
+        } else {
+            if ($name == 'usdFuturesApiOptions') {
+                $this->_spotApiOptions = $value;
+            } else {
+                if ($name == 'coinFuturesApiOptions') {
+                    $this->_coinFuturesApiOptions = $value;
+                }
+            }
         }
     }
 }

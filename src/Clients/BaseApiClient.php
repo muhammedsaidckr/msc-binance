@@ -6,7 +6,7 @@ use Mscakir\MscBinance\Authentication\ApiCredentials;
 use Mscakir\MscBinance\Authentication\AuthenticationProvider;
 use Mscakir\MscBinance\Enums\ArrayParametersSerialization;
 use Mscakir\MscBinance\Enums\RequestBodyFormat;
-use Mscakir\MscBinance\Objects\BaseClientOptions;
+use Mscakir\MscBinance\Objects\Options\BaseClientOptions;
 
 abstract class BaseApiClient
 {

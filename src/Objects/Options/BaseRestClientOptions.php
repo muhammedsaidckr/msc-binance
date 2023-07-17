@@ -1,9 +1,8 @@
 <?php
 
-namespace Mscakir\MscBinance\Objects;
+namespace Mscakir\MscBinance\Objects\Options;
 
 use GuzzleHttp\Client;
-use Mscakir\MscBinance\Authentication\ApiCredentials;
 
 class BaseRestClientOptions extends BaseClientOptions
 {

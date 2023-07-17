@@ -1,6 +1,6 @@
 <?php
 
-namespace Mscakir\MscBinance\Objects;
+namespace Mscakir\MscBinance\Objects\Options;
 
 use Mscakir\MscBinance\Clients\ApiClientOptions;
 
@@ -14,7 +14,7 @@ class BinanceApiClientOptions extends RestApiClientOptions
     }
 
     /**
-     * @param string $baseAddress
+     * @param  string  $baseAddress
      * @return BinanceApiClientOptions|RestApiClientOptions
      */
     public static function withBaseAddress(string $baseAddress): BinanceApiClientOptions|RestApiClientOptions
@@ -25,14 +25,14 @@ class BinanceApiClientOptions extends RestApiClientOptions
     }
 
     /**
-     * @param BinanceApiClientOptions|RestApiClientOptions|ApiClientOptions $baseOn
-     * @param BinanceApiClientOptions|RestApiClientOptions|ApiClientOptions|null $newValues
+     * @param  BinanceApiClientOptions|RestApiClientOptions|ApiClientOptions  $baseOn
+     * @param  BinanceApiClientOptions|RestApiClientOptions|ApiClientOptions|null  $newValues
      * @return RestApiClientOptions|BinanceApiClientOptions
      */
-    public function withApiClientOptions(BinanceApiClientOptions|RestApiClientOptions|ApiClientOptions $baseOn,
-                                         BinanceApiClientOptions|RestApiClientOptions|ApiClientOptions $newValues = null)
-    : RestApiClientOptions|BinanceApiClientOptions
-    {
+    public function withApiClientOptions(
+        BinanceApiClientOptions|RestApiClientOptions|ApiClientOptions $baseOn,
+        BinanceApiClientOptions|RestApiClientOptions|ApiClientOptions $newValues = null
+    ): RestApiClientOptions|BinanceApiClientOptions {
         return parent::withApiClientOptions($baseOn, $newValues);
     }
 }

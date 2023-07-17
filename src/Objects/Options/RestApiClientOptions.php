@@ -1,6 +1,6 @@
 <?php
 
-namespace Mscakir\MscBinance\Objects;
+namespace Mscakir\MscBinance\Objects\Options;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -23,10 +23,10 @@ class RestApiClientOptions extends ApiClientOptions
     }
 
     /**
-     * @param string $baseAddress
+     * @param  string  $baseAddress
      * @return RestApiClientOptions
      */
-    public static function withBaseAddress(string $baseAddress) : RestApiClientOptions
+    public static function withBaseAddress(string $baseAddress): RestApiClientOptions
     {
         $instance = new self();
         parent::withBaseAddress($baseAddress);
@@ -34,17 +34,23 @@ class RestApiClientOptions extends ApiClientOptions
     }
 
     /**
-     * @param RestApiClientOptions|ApiClientOptions $baseOn
-     * @param RestApiClientOptions|ApiClientOptions|null $newValues
+     * @param  RestApiClientOptions|ApiClientOptions  $baseOn
+     * @param  RestApiClientOptions|ApiClientOptions|null  $newValues
      * @return RestApiClientOptions
      */
-    public function withApiClientOptions(RestApiClientOptions|ApiClientOptions $baseOn, RestApiClientOptions|ApiClientOptions $newValues = null) : RestApiClientOptions
-    {
+    public function withApiClientOptions(
+        RestApiClientOptions|ApiClientOptions $baseOn,
+        RestApiClientOptions|ApiClientOptions $newValues = null
+    ): RestApiClientOptions {
         $instance = new self();
         parent::withApiClientOptions($baseOn, $newValues);
-        $this->rateLimitingBehaviour = $newValues != null ? $newValues->rateLimitingBehaviour : $baseOn->rateLimitingBehaviour;
+        $this->rateLimitingBehaviour = $newValues != null
+            ? $newValues->rateLimitingBehaviour
+            : $baseOn->rateLimitingBehaviour;
         $this->autoTimestamp = $newValues != null ? $newValues->autoTimestamp : $baseOn->autoTimestamp;
-        $this->timetampRecalculationInterval = $newValues != null ? $newValues->timetampRecalculationInterval : $baseOn->timetampRecalculationInterval;
+        $this->timetampRecalculationInterval = $newValues != null
+            ? $newValues->timetampRecalculationInterval
+            : $baseOn->timetampRecalculationInterval;
         $this->rateLimiters = $newValues != null ? $newValues->rateLimiters : $baseOn->rateLimiters;
         return $instance;
     }

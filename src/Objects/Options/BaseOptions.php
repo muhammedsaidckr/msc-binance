@@ -1,6 +1,6 @@
 <?php
 
-namespace Mscakir\MscBinance\Objects;
+namespace Mscakir\MscBinance\Objects\Options;
 
 use Illuminate\Support\Collection;
 use Mscakir\MscBinance\Logging\LogLevel;

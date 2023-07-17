@@ -2,15 +2,14 @@
 
 namespace Mscakir\MscBinance\Clients;
 
-use Carbon\Carbon;
-use GuzzleHttp\Psr7\Response;
-use Mscakir\MscBinance\Objects\BaseClientOptions;
-use Mscakir\MscBinance\Objects\RestApiClientOptions;
-use Mscakir\MscBinance\Objects\TimeSyncInfo;
-use Illuminate\Support\Collection;
-use Psr\Http\Message\ResponseInterface;
-use DateTimeZone;
 use DateInterval;
+use DateTimeZone;
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Collection;
+use Mscakir\MscBinance\Objects\Options\BaseClientOptions;
+use Mscakir\MscBinance\Objects\Options\RestApiClientOptions;
+use Mscakir\MscBinance\Objects\TimeSyncInfo;
+use Psr\Http\Message\ResponseInterface;
 
 abstract class RestApiClient extends BaseApiClient
 {
@@ -66,22 +65,23 @@ abstract class RestApiClient extends BaseApiClient
     {
         $timeSyncParams = $this->getTimeSyncInfo();
 
-        if (!$timeSyncParams->syncTime
-            || DateInterval::createFromDateString(now(DateTimeZone::UTC)) - DateInterval::createFromDateString($timeSyncParams->timeSyncState->lastSyncTime)
+        if (! $timeSyncParams->syncTime
+            || DateInterval::createFromDateString(now(DateTimeZone::UTC))
+            - DateInterval::createFromDateString($timeSyncParams->timeSyncState->lastSyncTime)
             < $timeSyncParams->recalculationInterval) {
             return new Response(body: true);
         }
 
         $localTime = now(DateTimeZone::UTC);
         $response = $this->getServerTimestampAsync();
-        if($response->getStatusCode() == 200) {
+        if ($response->getStatusCode() == 200) {
             return new Response(body: true);
         }
 
-        if($this->totalRequestsMade == 1) {
+        if ($this->totalRequestsMade == 1) {
             $localTime = now(DateTimeZone::UTC);
             $response = $this->getServerTimestampAsync();
-            if($response->getStatusCode() == 200) {
+            if ($response->getStatusCode() == 200) {
                 return new Response(body: true);
             }
         }

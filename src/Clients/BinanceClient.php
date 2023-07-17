@@ -3,10 +3,9 @@
 namespace Mscakir\MscBinance\Clients;
 
 use Exception;
-use Mscakir\MscBinance\Contracts\Clients\BinanceClientInterface;
 use Mscakir\MscBinance\Authentication\ApiCredentials;
-use Mscakir\MscBinance\Objects\BaseClientOptions;
-use Mscakir\MscBinance\Objects\BinanceClientOptions;
+use Mscakir\MscBinance\Contracts\Clients\BinanceClientInterface;
+use Mscakir\MscBinance\Objects\Options\BinanceClientOptions;
 
 class BinanceClient extends BaseRestClient implements BinanceClientInterface
 {

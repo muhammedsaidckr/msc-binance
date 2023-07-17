@@ -3,10 +3,10 @@
 namespace Mscakir\MscBinance\Clients;
 
 use Illuminate\Support\Collection;
-use Mscakir\MscBinance\Logging\LogLevel;
-use Mscakir\MscBinance\Objects\BaseClientOptions;
-use Mscakir\MscBinance\Objects\CallResult;
 use Mscakir\MscBinance\Logging\Log;
+use Mscakir\MscBinance\Logging\LogLevel;
+use Mscakir\MscBinance\Objects\CallResult;
+use Mscakir\MscBinance\Objects\Options\BaseClientOptions;
 
 abstract class BaseClient
 {

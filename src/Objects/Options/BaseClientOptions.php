@@ -1,9 +1,9 @@
 <?php
 
-namespace Mscakir\MscBinance\Objects;
+namespace Mscakir\MscBinance\Objects\Options;
 
-use Carbon\Carbon;
 use Mscakir\MscBinance\Authentication\ApiCredentials;
+use Mscakir\MscBinance\Objects\ApiProxy;
 
 class BaseClientOptions extends BaseOptions
 {
