@@ -9,18 +9,21 @@ class ApiCredentials
 {
     /**
      * The api key to authenticate requests
+     *
      * @var string $key
      */
     public string $key;
 
     /**
      * The api secret to authenticate requests
+     *
      * @var string $secret
      */
     public string $secret;
 
     /**
      * The private key to authenticate requests
+     *
      * @var PrivateKey $privateKey
      */
     public PrivateKey $privateKey;
@@ -32,10 +35,10 @@ class ApiCredentials
     /**
      * Create Api credentials providing a private key for authentication
      *
-     * @param PrivateKey $privateKey
+     * @param  PrivateKey  $privateKey
      * @return ApiCredentials
      */
-    public function createWithPrivateKey(PrivateKey $privateKey) : ApiCredentials
+    public function createWithPrivateKey(PrivateKey $privateKey): ApiCredentials
     {
         $instance = new self();
         $instance->privateKey = $privateKey;
@@ -49,14 +52,14 @@ class ApiCredentials
     /**
      * Create Api credentials providing api key and secret key for authentication
      *
-     * @param string $key
-     * @param string $secret
+     * @param  string  $key
+     * @param  string  $secret
      * @return ApiCredentials
      * @throws Exception
      */
-    public function createWithApiAndSecretKey(string $key, string $secret) : ApiCredentials
+    public static function createWithApiAndSecretKey(string $key, string $secret): ApiCredentials
     {
-        if(isEmptyOrNullString($key) || isEmptyOrNullString($secret)) {
+        if (is_null($key) || is_null($secret)) {
             throw new Exception("Key and secret can't be empty/null");
         }
         $instance = new self();

@@ -38,6 +38,7 @@ abstract class BaseClient
         $this->log->updateWriters($options->logWriters);
         $this->log->level = $options->logLevel;
         $this->clientOptions = $options;
+        $this->apiClients = collect();
         $this->name = $name;
         $this->log->write(
             LogLevel::EMERGENCY,
@@ -53,7 +54,7 @@ abstract class BaseClient
     {
         $this->log->write(
             LogLevel::EMERGENCY,
-            sprintf("%s configuration : %s", (object)gettype($apiClient), (object)$apiClient->options)
+            sprintf("%s configuration : %s", gettype($apiClient), json_encode($apiClient->options))
         );
         $this->apiClients->add($apiClient);
         return $apiClient;

@@ -47,8 +47,10 @@ abstract class RestApiClient extends BaseApiClient
         parent::__construct($options, $apiOptions);
 
         $rateLimiterList = new Collection();
-        foreach ($apiOptions->rateLimiters as $rateLimiter) {
-            $rateLimiterList->add($rateLimiter);
+        if($rateLimiterList->count() > 0) {
+            foreach ($apiOptions->rateLimiters as $rateLimiter) {
+                $rateLimiterList->add($rateLimiter);
+            }
         }
 
         $this->rateLimiters = $rateLimiterList;
